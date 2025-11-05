@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.log
+
+# Virtual Environment
+venv/
+ENV/
+env/
+.venv
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Environment variables
+.env
+.env.local
+*.key
+secrets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Node modules (for VS Code extension)
+vscode-extension/node_modules/
+vscode-extension/out/
+vscode-extension/dist/
+vscode-extension/*.vsix
+
+# Build files
+vscode-extension/.vscode-test/
+vscode-extension/package-lock.json
+
+# Documentation (keep only essential)
+*_COMPLETE.md
+*_GUIDE.md
+*_SUMMARY.md
+FIXES_COMPLETE.md
+FIX_COMPLETE.md
+ICON_*.md
+DEPLOYMENT_*.md
+WEATHER_*.md
+GEMINI_*.md
+SELF_LEARNING_*.md
+SERVER_*.md
+WIDGET_*.md
+UI_COMPARISON.md
+UPDATE_COMPLETE.md
+CONFIGURATOR_*.md
+GREETING_FIX.md
+HTTPS_*.md
+SKILLFUSION_*.md
+OPENWEATHERMAP_*.md
+WEATHERAPI_*.md

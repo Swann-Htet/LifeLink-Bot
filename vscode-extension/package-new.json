@@ -1,0 +1,242 @@
+{
+    "name": "lifelink-codebuddy",
+    "displayName": "LifeLink CodeBuddy - AI Pet Companion",
+    "description": "Your friendly AI-powered coding companion! Chat, get weather updates, and coding motivation with an interactive pet assistant.",
+    "version": "2.0.0",
+    "publisher": "SkillFusion",
+    "icon": "assets/icon.png",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other",
+        "Education",
+        "Snippets"
+    ],
+    "keywords": [
+        "chatbot",
+        "AI",
+        "pet",
+        "companion",
+        "weather",
+        "motivation",
+        "coding assistant",
+        "developer tools"
+    ],
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "lifelink.showCodeBuddy",
+                "title": "Show CodeBuddy",
+                "category": "CodeBuddy",
+                "icon": "$(symbol-event)"
+            },
+            {
+                "command": "lifelink.quickChat",
+                "title": "Quick Chat",
+                "category": "CodeBuddy",
+                "icon": "$(comment)"
+            },
+            {
+                "command": "lifelink.getWeather",
+                "title": "Get Weather",
+                "category": "CodeBuddy",
+                "icon": "$(cloud)"
+            },
+            {
+                "command": "lifelink.setLocation",
+                "title": "Set Weather Location",
+                "category": "CodeBuddy",
+                "icon": "$(location)"
+            },
+            {
+                "command": "lifelink.changePet",
+                "title": "Change Your Pet",
+                "category": "CodeBuddy",
+                "icon": "$(sparkle)"
+            },
+            {
+                "command": "lifelink.motivateMe",
+                "title": "Motivate Me!",
+                "category": "CodeBuddy",
+                "icon": "$(rocket)"
+            },
+            {
+                "command": "lifelink.getCodingTip",
+                "title": "Get Coding Tip",
+                "category": "CodeBuddy",
+                "icon": "$(lightbulb)"
+            },
+            {
+                "command": "lifelink.configureApi",
+                "title": "Configure Chatbot API",
+                "category": "CodeBuddy",
+                "icon": "$(settings-gear)"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "lifelink-codebuddy",
+                    "title": "CodeBuddy",
+                    "icon": "assets/weather-icon.svg"
+                }
+            ]
+        },
+        "views": {
+            "lifelink-codebuddy": [
+                {
+                    "id": "lifelinkCodeBuddy",
+                    "name": "Chat with CodeBuddy",
+                    "icon": "assets/weather-icon.svg",
+                    "type": "webview"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "LifeLink CodeBuddy",
+            "properties": {
+                "lifelinkPet.petType": {
+                    "type": "string",
+                    "enum": [
+                        "cat",
+                        "dog",
+                        "dragon",
+                        "robot",
+                        "unicorn"
+                    ],
+                    "default": "cat",
+                    "description": "Choose your coding companion"
+                },
+                "lifelinkPet.petName": {
+                    "type": "string",
+                    "default": "CodeBuddy",
+                    "description": "Name your coding companion"
+                },
+                "lifelinkPet.chatbotApiUrl": {
+                    "type": "string",
+                    "default": "http://localhost:5000",
+                    "description": "LifeLink chatbot API endpoint URL"
+                },
+                "lifelinkPet.location": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your location for weather updates (leave empty for auto-detect)"
+                },
+                "lifelinkPet.weatherApiKey": {
+                    "type": "string",
+                    "default": "20675ec7b741f24d43880522b9f1e2c9",
+                    "description": "OpenWeatherMap API key"
+                },
+                "lifelinkPet.showMotivation": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Show random motivational messages"
+                },
+                "lifelinkPet.autoWeatherUpdates": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Automatically update weather in background"
+                },
+                "lifelinkPet.updateInterval": {
+                    "type": "number",
+                    "default": 30,
+                    "minimum": 5,
+                    "maximum": 120,
+                    "description": "Weather update interval in minutes"
+                },
+                "lifelinkPet.enableAnimations": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Enable pet animations"
+                },
+                "lifelinkPet.theme": {
+                    "type": "string",
+                    "enum": [
+                        "purple",
+                        "blue",
+                        "green",
+                        "pink",
+                        "dark"
+                    ],
+                    "default": "purple",
+                    "description": "Color theme for CodeBuddy interface"
+                }
+            }
+        },
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "lifelink.showCodeBuddy"
+                },
+                {
+                    "command": "lifelink.quickChat"
+                },
+                {
+                    "command": "lifelink.getWeather"
+                },
+                {
+                    "command": "lifelink.setLocation"
+                },
+                {
+                    "command": "lifelink.changePet"
+                },
+                {
+                    "command": "lifelink.motivateMe"
+                },
+                {
+                    "command": "lifelink.getCodingTip"
+                },
+                {
+                    "command": "lifelink.configureApi"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile && npm run lint",
+        "lint": "eslint src --ext ts",
+        "test": "node ./out/test/runTest.js",
+        "package": "vsce package"
+    },
+    "devDependencies": {
+        "@types/node": "^18.0.0",
+        "@types/vscode": "^1.85.0",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.0.0",
+        "typescript": "^5.0.0",
+        "@vscode/test-electron": "^2.3.0",
+        "vsce": "^2.15.0"
+    },
+    "dependencies": {
+        "axios": "^1.6.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/skillfusion/lifelink-codebuddy"
+    },
+    "bugs": {
+        "url": "https://github.com/skillfusion/lifelink-codebuddy/issues"
+    },
+    "homepage": "https://github.com/skillfusion/lifelink-codebuddy#readme",
+    "license": "MIT",
+    "galleryBanner": {
+        "color": "#764ba2",
+        "theme": "dark"
+    },
+    "badges": [
+        {
+            "url": "https://img.shields.io/badge/AI-Powered-brightgreen",
+            "href": "https://github.com/skillfusion/lifelink-codebuddy",
+            "description": "AI Powered"
+        }
+    ]
+}

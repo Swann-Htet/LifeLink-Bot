@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink Widget Debug Page</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        h1 {
+            color: #4ec9b0;
+        }
+        .debug-box {
+            background: #252526;
+            border: 1px solid #3e3e42;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            color: #4ec9b0;
+        }
+        .error {
+            color: #f48771;
+        }
+        .info {
+            color: #569cd6;
+        }
+        #console-log {
+            background: #1e1e1e;
+            border: 1px solid #3e3e42;
+            padding: 15px;
+            margin: 10px 0;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 12px;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+            border-left: 3px solid #569cd6;
+        }
+        .log-error {
+            border-left-color: #f48771;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 LifeLink Widget Debug Page</h1>
+    
+    <div class="debug-box">
+        <h3>Page Information</h3>
+        <p><strong>Current Domain:</strong> <span id="current-domain" class="info"></span></p>
+        <p><strong>Widget Script URL:</strong> <span class="info">https://eng.skillfusion.tech/widget.js?v=2.0</span></p>
+        <p><strong>Expected API URL:</strong> <span class="success">https://eng.skillfusion.tech</span></p>
+    </div>
+
+    <div class="debug-box">
+        <h3>Widget Status</h3>
+        <p><strong>Script Loaded:</strong> <span id="script-loaded" class="error">Checking...</span></p>
+        <p><strong>Widget Initialized:</strong> <span id="widget-init" class="error">Checking...</span></p>
+        <p><strong>Font Awesome Loaded:</strong> <span id="fontawesome-loaded" class="error">Checking...</span></p>
+    </div>
+
+    <div class="debug-box">
+        <h3>Console Logs</h3>
+        <div id="console-log">Waiting for logs...</div>
+    </div>
+
+    <div class="debug-box">
+        <h3>Test Actions</h3>
+        <button onclick="testAPIConnection()" style="padding: 10px 20px; background: #007acc; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+            Test API Connection
+        </button>
+        <button onclick="checkWidget()" style="padding: 10px 20px; background: #007acc; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+            Check Widget Elements
+        </button>
+        <button onclick="clearLogs()" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+            Clear Logs
+        </button>
+    </div>
+
+    <script>
+        // Intercept console.log
+        const consoleLog = document.getElementById('console-log');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function addLog(message, type = 'log') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry' + (type === 'error' ? ' log-error' : '');
+            entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            consoleLog.appendChild(entry);
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog(args.join(' '), 'log');
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog('ERROR: ' + args.join(' '), 'error');
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addLog('WARN: ' + args.join(' '), 'warn');
+        };
+
+        // Set current domain
+        document.getElementById('current-domain').textContent = window.location.origin;
+
+        // Check if script loaded
+        setTimeout(() => {
+            const scriptLoaded = document.querySelector('script[src*="widget.js"]');
+            document.getElementById('script-loaded').textContent = scriptLoaded ? 'Yes ✓' : 'No ✗';
+            document.getElementById('script-loaded').className = scriptLoaded ? 'success' : 'error';
+        }, 1000);
+
+        // Check if widget initialized
+        setTimeout(() => {
+            const widget = document.getElementById('lifelink-chatbot-widget');
+            document.getElementById('widget-init').textContent = widget ? 'Yes ✓' : 'No ✗';
+            document.getElementById('widget-init').className = widget ? 'success' : 'error';
+        }, 2000);
+
+        // Check Font Awesome
+        setTimeout(() => {
+            const faLink = document.querySelector('link[href*="font-awesome"]');
+            document.getElementById('fontawesome-loaded').textContent = faLink ? 'Yes ✓' : 'No ✗';
+            document.getElementById('fontawesome-loaded').className = faLink ? 'success' : 'error';
+        }, 2000);
+
+        // Test API connection
+        async function testAPIConnection() {
+            addLog('Testing API connection to https://eng.skillfusion.tech/chat...', 'log');
+            try {
+                const response = await fetch('https://eng.skillfusion.tech/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'test',
+                        session_id: 'debug-test'
+                    })
+                });
+                const data = await response.json();
+                addLog(`API Response: ${JSON.stringify(data)}`, 'log');
+                alert('API connection successful! Check console logs.');
+            } catch (error) {
+                addLog(`API Connection Error: ${error.message}`, 'error');
+                alert('API connection failed! Check console logs.');
+            }
+        }
+
+        // Check widget elements
+        function checkWidget() {
+            const widget = document.getElementById('lifelink-chatbot-widget');
+            const button = document.getElementById('lifelink-chat-button');
+            const window = document.getElementById('lifelink-chat-window');
+            
+            addLog('Widget Container: ' + (widget ? 'Found ✓' : 'Not found ✗'), widget ? 'log' : 'error');
+            addLog('Chat Button: ' + (button ? 'Found ✓' : 'Not found ✗'), button ? 'log' : 'error');
+            addLog('Chat Window: ' + (window ? 'Found ✓' : 'Not found ✗'), window ? 'log' : 'error');
+            
+            const faIcons = document.querySelectorAll('.fas, .far, .fab');
+            addLog(`Font Awesome Icons Found: ${faIcons.length}`, faIcons.length > 0 ? 'log' : 'error');
+        }
+
+        // Clear logs
+        function clearLogs() {
+            consoleLog.innerHTML = 'Logs cleared.';
+        }
+
+        // Initial log
+        addLog('Debug page loaded. Widget script will load next...', 'log');
+    </script>
+
+    <!-- LifeLink Widget with version parameter to bypass cache -->
+    <script src="https://eng.skillfusion.tech/widget.js?v=2.0"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test LifeLink Widget - External Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #331013;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #331013;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 LifeLink Widget Test Page</h1>
+        <p>This page simulates embedding the LifeLink widget on an external website (different domain).</p>
+        
+        <div class="info-box">
+            <h3>✅ Testing Configuration</h3>
+            <p><strong>Widget Source:</strong> https://eng.skillfusion.tech/widget.js</p>
+            <p><strong>This Page Domain:</strong> <span id="currentDomain"></span></p>
+            <p><strong>Expected API Endpoint:</strong> https://eng.skillfusion.tech/chat</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🎯 What Should Happen:</h3>
+            <ul>
+                <li>Widget button appears in bottom-right corner (dark burgundy color)</li>
+                <li>All Font Awesome icons load correctly</li>
+                <li>Widget connects to <strong>https://eng.skillfusion.tech/chat</strong> (not this page's domain)</li>
+                <li>Chat responses work without "Connection error"</li>
+            </ul>
+        </div>
+
+        <p class="success">Look for the chat button in the bottom-right corner! 👉</p>
+    </div>
+
+    <script>
+        document.getElementById('currentDomain').textContent = window.location.origin;
+    </script>
+
+    <!-- LifeLink Widget Embed Code -->
+    <script src="https://eng.skillfusion.tech/widget.js?v=2.0"></script>
+</body>
+</html>

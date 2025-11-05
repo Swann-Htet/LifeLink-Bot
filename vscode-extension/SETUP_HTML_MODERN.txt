@@ -1,0 +1,3 @@
+This is the modern setup HTML with beautiful P5.js animations to replace in PetViewProvider.ts
+
+Replace the entire getSetupHtml method with this version.

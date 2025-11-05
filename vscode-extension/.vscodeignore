@@ -1,0 +1,36 @@
+# Build artifacts - keep dist/ (bundled extension)
+node_modules/
+out/
+
+# Source files (not needed in package)
+src/
+tsconfig.json
+.eslintrc.js
+webpack.config.js
+
+# Development files
+.vscode/
+.vscode-test/
+.gitignore
+
+# Documentation (keep README, exclude others)
+SETUP.md
+EXTENSION_COMPLETE.md
+FIX_COMPLETE.md
+OPENWEATHERMAP_MIGRATION.md
+*.md
+!README.md
+
+# Tests
+test/
+*.test.ts
+*.test.js
+
+# Backups
+backup/
+
+# Other
+.DS_Store
+*.map
+*.vsix
+

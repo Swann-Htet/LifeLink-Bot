@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Website - With Hosted LifeLink Widget</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Sample Website Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        /* Sample Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .info-box {
+            background: #f0f9ff;
+            border-left: 5px solid #3b82f6;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+
+        .info-box h2 {
+            color: #1e40af;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .info-box p {
+            color: #334155;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .info-box code {
+            background: #dbeafe;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #1e40af;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 2px dashed #f59e0b;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .highlight-box p {
+            color: #78350f;
+            font-size: 1.1em;
+        }
+
+        .code-section {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .code-section h3 {
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .code-section pre {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .feature-card .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h4 {
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 1em;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 20px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #059669;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sample Website Header -->
+    <div class="header">
+        <h1>🌍 Example Company Website</h1>
+        <p>This is a demo website showing how to embed the hosted LifeLink chatbot</p>
+    </div>
+
+    <!-- Sample Content -->
+    <div class="container">
+        <!-- Intro Info Box -->
+        <div class="info-box">
+            <h2>📢 About This Demo</h2>
+            <p>
+                This is an <strong>example website</strong> demonstrating how ANY website owner can embed the 
+                LifeLink disaster response chatbot that YOU host on your Ubuntu server.
+            </p>
+            <p>
+                <strong>Key Point:</strong> The website owner doesn't need to install anything on their server, 
+                set up a database, or manage any backend. They just paste ONE simple code snippet!
+            </p>
+        </div>
+
+        <!-- Highlight Box -->
+        <div class="highlight-box">
+            <h3>👀 Look for the Pink Button!</h3>
+            <p>
+                The LifeLink chatbot widget is already embedded on this page.<br>
+                Look for the <strong>pink floating button</strong> in the bottom-right corner!
+            </p>
+        </div>
+
+        <!-- How It Works -->
+        <div class="info-box">
+            <h2>🚀 How This Works (The Magic Explained)</h2>
+            <p><strong>Step 1:</strong> YOU host the LifeLink chatbot on your Ubuntu server at <code>https://your-domain.com</code></p>
+            <p><strong>Step 2:</strong> Your server serves the <code>widget.js</code> file at <code>https://your-domain.com/widget.js</code></p>
+            <p><strong>Step 3:</strong> Website owners visit your <code>/configurator</code> page and customize colors/settings</p>
+            <p><strong>Step 4:</strong> They copy the generated code and paste it on THEIR website</p>
+            <p><strong>Step 5:</strong> The chatbot appears on their site, but ALL the AI processing happens on YOUR server! ✨</p>
+        </div>
+
+        <!-- Features Grid -->
+        <h2 style="text-align: center; color: #1e40af; margin: 50px 0 30px 0; font-size: 2em;">
+            ✨ Features of the Embedded Widget
+        </h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon">🤖</div>
+                <h4>AI-Powered</h4>
+                <p>Google Gemini 2.0 Flash + FLAN-T5 for intelligent disaster response guidance</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h4>Customizable</h4>
+                <p>Website owners can customize colors to match their brand identity</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📱</div>
+                <h4>Mobile Friendly</h4>
+                <p>Responsive design that works perfectly on all devices</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h4>Lightning Fast</h4>
+                <p>Less than 1 second response time on average</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔒</div>
+                <h4>Secure & Private</h4>
+                <p>CORS-enabled, secure API calls with SSL encryption</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🆓</div>
+                <h4>Free Forever</h4>
+                <p>No installation fees, no monthly costs, completely free!</p>
+            </div>
+        </div>
+
+        <!-- The Code Used -->
+        <div class="code-section">
+            <h3>💻 The Code Used on This Page</h3>
+            <p style="color: #94a3b8; margin-bottom: 15px;">
+                This is ALL the code needed to add the chatbot to this website:
+            </p>
+            <pre>&lt;!-- LifeLink Disaster Response Chatbot --&gt;
+&lt;script&gt;
+  window.LifeLinkConfig = {
+    // No apiUrl needed - automatically uses widget.js domain!
+    primaryColor: '#ff4757',
+    buttonColor: '#ffa7c4',
+    position: 'bottom-right',
+    buttonSize: 56,
+    windowWidth: 400,
+    windowHeight: 600,
+    brandName: 'Example Company'       // <span style="color: #86efac;">← Their company name</span>
+  };
+&lt;/script&gt;
+&lt;script src="<span style="color: #fbbf24;">http://your-domain.com/widget.js</span>"&gt;&lt;/script&gt;  <span style="color: #86efac;">← Change to YOUR domain!</span></pre>
+        </div>
+
+        <!-- Production Example -->
+        <div class="info-box" style="background: #f0fdf4; border-color: #22c55e;">
+            <h2 style="color: #15803d;">🌐 Production Example (After You Deploy)</h2>
+            <p><strong>After you deploy to Ubuntu with SSL, the code will look like this:</strong></p>
+            <div class="code-section" style="margin-top: 20px;">
+                <pre>&lt;script&gt;
+  window.LifeLinkConfig = {
+    // No apiUrl needed anymore!
+    primaryColor: '#ff4757',
+    buttonColor: '#ffa7c4',
+    position: 'bottom-right',
+    buttonSize: 56,
+    windowWidth: 400,
+    windowHeight: 600,
+    brandName: 'Example Company'
+  };
+&lt;/script&gt;
+&lt;script src="<span style="color: #fbbf24;">https://chatbot.yourdomain.com/widget.js</span>"&gt;&lt;/script&gt;</pre>
+            </div>
+            <p style="margin-top: 15px;">
+                ✅ <strong>That's it!</strong> Any website can use this code to get the chatbot on their site.
+            </p>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>🚀 Ready to Host Your Own?</h2>
+            <p>
+                Deploy LifeLink to your Ubuntu server and let thousands of websites<br>
+                use your disaster response chatbot for FREE!
+            </p>
+            <a href="http://localhost:5000/configurator" class="cta-button">
+                🎨 Open Configurator
+            </a>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="info-box" style="background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%); border-color: #8b5cf6;">
+            <h2 style="color: #6b21a8;">🎯 Why This Model Works</h2>
+            <div style="margin-top: 20px;">
+                <h3 style="color: #7c3aed; margin-top: 20px;">For YOU (The Host):</h3>
+                <ul style="color: #6b21a8; margin-left: 30px; line-height: 2;">
+                    <li>✅ Host ONCE on your Ubuntu server</li>
+                    <li>✅ Everyone uses YOUR hosted version</li>
+                    <li>✅ You control updates and improvements</li>
+                    <li>✅ Track usage and analytics (optional)</li>
+                    <li>✅ Build reputation as disaster response solution provider</li>
+                </ul>
+
+                <h3 style="color: #7c3aed; margin-top: 30px;">For Website Owners:</h3>
+                <ul style="color: #6b21a8; margin-left: 30px; line-height: 2;">
+                    <li>✅ NO backend setup required</li>
+                    <li>✅ NO database needed</li>
+                    <li>✅ NO hosting costs</li>
+                    <li>✅ NO maintenance burden</li>
+                    <li>✅ Just paste code and GO!</li>
+                </ul>
+
+                <h3 style="color: #7c3aed; margin-top: 30px;">For End Users (Visitors):</h3>
+                <ul style="color: #6b21a8; margin-left: 30px; line-height: 2;">
+                    <li>✅ Get disaster help on ANY website they visit</li>
+                    <li>✅ Consistent, reliable AI responses</li>
+                    <li>✅ Fast, real-time assistance</li>
+                    <li>✅ Works seamlessly across all devices</li>
+                    <li>✅ 100% free, no signup required</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>This is a demo website showing the embedded LifeLink chatbot widget</p>
+        <p style="margin-top: 10px;">© 2025 Example Company • Powered by LifeLink (Hosted by SkillFusion)</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- EMBEDDED LIFELINK WIDGET CODE STARTS HERE   -->
+    <!-- ============================================ -->
+    <script>
+        // Configuration for the chatbot widget
+        // Website owners customize these values for their brand
+        window.LifeLinkConfig = {
+            // apiUrl is now automatic - uses the same domain as the widget.js file!
+            primaryColor: '#331013',
+            buttonColor: '#9b224a',
+            textColor: '#ffffff',
+            position: 'bottom-right',                // Position on screen
+            buttonSize: 56,                          // Button size in pixels
+            windowWidth: 400,                        // Chat window width
+            windowHeight: 600,                       // Chat window height
+            fontFamily: 'Poppins, sans-serif',
+            brandName: 'Example Company'             // This website's company name
+        };
+    </script>
+    <!-- Load the widget from YOUR hosted server -->
+    <script src="https://eng.skillfusion.tech/widget.js?v=2.0"></script>
+    <!-- ============================================ -->
+    <!-- THAT'S ALL! CHATBOT IS NOW ACTIVE ON PAGE   -->
+    <!-- ============================================ -->
+</body>
+</html>

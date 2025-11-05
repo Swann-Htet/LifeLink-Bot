@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLink Widget Test - Weather Alert Feature Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .feature-highlight {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .feature-highlight h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .log-entry {
+            margin: 5px 0;
+            padding: 5px;
+        }
+
+        .log-error {
+            color: #f48771;
+        }
+
+        .log-warn {
+            color: #fbbf24;
+        }
+
+        .log-success {
+            color: #4ec9b0;
+        }
+
+        button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #1976d2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+        }
+
+        .weather-demo {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+            margin: 20px 0;
+        }
+
+        .weather-example {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+            🌤️ LifeLink Widget Test
+            <span class="badge">NEW: Weather Alert!</span>
+        </h1>
+
+        <div class="feature-highlight">
+            <h3>✨ New Feature: Weather Alert with AI Recommendations</h3>
+            <p><strong>Look for the purple "Weather Alert" button in the chatbot widget!</strong></p>
+            <div class="weather-example">
+                <strong>Example Output:</strong><br><br>
+                🌤️ <strong>Weather Alert for New York, US</strong><br><br>
+                <strong>Current Conditions:</strong><br>
+                🌡️ Temperature: 65°F (feels like 63°F)<br>
+                🌧️ Condition: Light Rain<br>
+                💧 Humidity: 80%<br>
+                💨 Wind Speed: 10 mph<br><br>
+                <strong>AI Recommendations:</strong><br>
+                ☂️ Don't forget to bring an umbrella!<br>
+                🧥 Wear a waterproof jacket to stay warm<br>
+                🚗 Drive carefully - roads may be slippery
+            </div>
+            <p><strong>How to use:</strong></p>
+            <ol>
+                <li>Click the chat button in the bottom-right corner</li>
+                <li>Look for the purple "Weather Alert" button at the top</li>
+                <li>Click it to get weather info with AI recommendations!</li>
+            </ol>
+        </div>
+
+        <div class="status">
+            <h3>Test Status</h3>
+            <p><strong>Current Domain:</strong> <span id="current-domain"></span></p>
+            <p><strong>Widget Script URL:</strong> https://eng.skillfusion.tech/widget.js?v=2.0</p>
+            <p><strong>Expected API URL:</strong> https://eng.skillfusion.tech/chat</p>
+            <p><strong>Weather API URL:</strong> https://eng.skillfusion.tech/weather-alert</p>
+            <p><strong>Widget Loaded:</strong> <span id="widget-status">Checking...</span></p>
+        </div>
+
+        <h3>Console Output (Real-time)</h3>
+        <div class="console-output" id="console-output">
+            <div class="log-entry">Waiting for widget to load...</div>
+        </div>
+
+        <div>
+            <button onclick="checkWidgetStatus()">🔍 Check Widget Status</button>
+            <button onclick="testAPIConnection()">🌐 Test Chat API</button>
+            <button onclick="testWeatherAPI()">🌤️ Test Weather API</button>
+            <button onclick="clearConsole()">🗑️ Clear Console</button>
+        </div>
+
+        <div class="status" style="margin-top: 30px; background: #fff3cd; border-left-color: #ffc107;">
+            <h3>ℹ️ Instructions</h3>
+            <p>1. Open browser console (F12) to see detailed logs</p>
+            <p>2. Look for logs starting with "LifeLink Widget:"</p>
+            <p>3. Check if the widget button appears in the bottom-right corner</p>
+            <p>4. <strong>NEW:</strong> Look for the purple "Weather Alert" button in the widget</p>
+            <p>5. If you see errors, copy them and share for debugging</p>
+        </div>
+    </div>
+
+    <script>
+        // Display current domain
+        document.getElementById('current-domain').textContent = window.location.origin;
+
+        // Intercept console.log, console.error, console.warn
+        const consoleOutput = document.getElementById('console-output');
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function addLog(message, type = 'log') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            if (type === 'error') entry.classList.add('log-error');
+            if (type === 'warn') entry.classList.add('log-warn');
+            if (type === 'success') entry.classList.add('log-success');
+
+            const timestamp = new Date().toLocaleTimeString();
+            entry.textContent = `[${timestamp}] ${message}`;
+            consoleOutput.appendChild(entry);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function (...args) {
+            originalLog.apply(console, args);
+            const message = args.join(' ');
+            if (message.includes('LifeLink')) {
+                addLog(message, message.includes('ERROR') ? 'error' : (message.includes('✅') ? 'success' : 'log'));
+            }
+        };
+
+        console.error = function (...args) {
+            originalError.apply(console, args);
+            const message = args.join(' ');
+            addLog('ERROR: ' + message, 'error');
+        };
+
+        console.warn = function (...args) {
+            originalWarn.apply(console, args);
+            const message = args.join(' ');
+            addLog('WARN: ' + message, 'warn');
+        };
+
+        // Check widget status
+        function checkWidgetStatus() {
+            const button = document.getElementById('lifelink-chat-button');
+            const window = document.getElementById('lifelink-chat-window');
+            const widget = document.getElementById('lifelink-chatbot-widget');
+            const weatherBtn = document.getElementById('lifelink-weather-alert');
+
+            addLog('--- Widget Status Check ---', 'log');
+            addLog('Widget Container: ' + (widget ? '✅ Found' : '❌ Not Found'), widget ? 'success' : 'error');
+            addLog('Chat Button: ' + (button ? '✅ Found' : '❌ Not Found'), button ? 'success' : 'error');
+            addLog('Chat Window: ' + (window ? '✅ Found' : '❌ Not Found'), window ? 'success' : 'error');
+            addLog('Weather Alert Button: ' + (weatherBtn ? '✅ Found (NEW!)' : '⚠️ Not Found'), weatherBtn ? 'success' : 'warn');
+
+            if (button) {
+                const styles = getComputedStyle(button);
+                addLog('Button Visibility: ' + styles.display, 'log');
+                addLog('Button Position: ' + styles.position, 'log');
+                addLog('Button Z-Index: ' + styles.zIndex, 'log');
+                addLog('Button Background: ' + styles.backgroundColor, 'log');
+            }
+
+            const faIcons = document.querySelectorAll('.fas, .far, .fab');
+            addLog('Font Awesome Icons: ' + faIcons.length + ' found', faIcons.length > 0 ? 'success' : 'warn');
+
+            if (weatherBtn) {
+                addLog('✨ Weather Alert feature is available!', 'success');
+            }
+
+            document.getElementById('widget-status').textContent = widget ? '✅ Loaded' : '❌ Not Loaded';
+        }
+
+        // Test API connection
+        async function testAPIConnection() {
+            addLog('--- Testing Chat API Connection ---', 'log');
+            addLog('Connecting to: https://eng.skillfusion.tech/chat', 'log');
+
+            try {
+                const response = await fetch('https://eng.skillfusion.tech/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'test connection',
+                        session_id: 'debug-test-' + Date.now()
+                    })
+                });
+
+                addLog('API Response Status: ' + response.status, response.ok ? 'success' : 'error');
+
+                const data = await response.json();
+                addLog('API Response: ' + JSON.stringify(data).substring(0, 100) + '...', 'success');
+
+            } catch (error) {
+                addLog('API Connection Error: ' + error.message, 'error');
+            }
+        }
+
+        // Test Weather API
+        async function testWeatherAPI() {
+            addLog('--- Testing Weather API Connection ---', 'log');
+            addLog('Connecting to: https://eng.skillfusion.tech/weather-alert', 'log');
+
+            try {
+                const response = await fetch('https://eng.skillfusion.tech/weather-alert', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        location: 'New York'
+                    })
+                });
+
+                addLog('Weather API Response Status: ' + response.status, response.ok ? 'success' : 'error');
+
+                const data = await response.json();
+                if (data.success) {
+                    addLog('Weather Data Retrieved: ' + data.weather.location + ', ' + data.weather.temperature + '°F', 'success');
+                    addLog('Condition: ' + data.weather.condition, 'success');
+                    addLog('Recommendations Generated: Yes', 'success');
+                } else {
+                    addLog('Weather API Error: ' + data.error, 'error');
+                }
+
+            } catch (error) {
+                addLog('Weather API Connection Error: ' + error.message, 'error');
+            }
+        }
+
+        // Clear console
+        function clearConsole() {
+            consoleOutput.innerHTML = '<div class="log-entry">Console cleared.</div>';
+        }
+
+        // Auto-check widget after 2 seconds
+        setTimeout(() => {
+            checkWidgetStatus();
+        }, 2000);
+
+        // Initial log
+        addLog('Test page loaded on: ' + window.location.origin, 'log');
+        addLog('Widget script should load from: https://eng.skillfusion.tech/widget.js?v=2.0', 'log');
+    </script>
+
+    <!-- LifeLink Widget - This should work on ANY domain -->
+    <script>
+        window.LifeLinkConfig = {
+            primaryColor: '#331013',
+            buttonColor: '#9b224a',
+            position: 'bottom-right'
+        };
+    </script>
+    <script src="https://eng.skillfusion.tech/widget.js?v=2.0"></script>
+</body>
+
+</html>

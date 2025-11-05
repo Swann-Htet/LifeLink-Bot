@@ -1,0 +1,158 @@
+{
+  "earthquake": {
+    "dos": [
+      "Drop, Cover, and Hold On if you're indoors during shaking",
+      "Stay away from windows, mirrors, and heavy objects that could fall",
+      "If outdoors, move to an open area away from buildings, trees, and power lines",
+      "After shaking stops, check for injuries and damage",
+      "Listen to emergency broadcasts for instructions",
+      "Be prepared for aftershocks",
+      "Turn off gas if you smell it or suspect a leak",
+      "Use stairs, not elevators when evacuating buildings",
+      "Keep emergency supplies ready: water, food, first aid kit, flashlight",
+      "Have a family communication plan"
+    ],
+    "donts": [
+      "Don't run outside during shaking - most injuries occur from falling objects",
+      "Don't use elevators during or after an earthquake",
+      "Don't light matches or use lighters if gas leak is suspected",
+      "Don't use your phone except for emergencies - keep lines clear",
+      "Don't spread or believe rumors - rely on official sources only",
+      "Don't enter damaged buildings",
+      "Don't touch downed power lines or objects touching them",
+      "Don't use your vehicle unless absolutely necessary",
+      "Don't panic - stay calm and think clearly",
+      "Don't stand near unstable structures or debris"
+    ]
+  },
+  "flood": {
+    "dos": [
+      "Move to higher ground immediately if flooding is expected",
+      "Evacuate if told to do so by authorities",
+      "Keep important documents in waterproof containers",
+      "Turn off utilities at main switches if instructed",
+      "Bring outdoor belongings inside or tie them down",
+      "Fill bathtubs and sinks with clean water as a reserve",
+      "Monitor weather updates and emergency broadcasts",
+      "Stay out of floodwater - it may be contaminated or electrically charged",
+      "Use a stick to check ground firmness if you must walk in water",
+      "Wear protective clothing and boots if exposed to floodwater"
+    ],
+    "donts": [
+      "Don't walk, swim, or drive through floodwater - just 6 inches can knock you down",
+      "Don't drive around barricades - they're there for your safety",
+      "Don't touch electrical equipment if wet or standing in water",
+      "Don't eat food that has been in contact with floodwater",
+      "Don't return home until authorities say it's safe",
+      "Don't ignore evacuation orders",
+      "Don't underestimate the power of moving water",
+      "Don't let children play in or near floodwater",
+      "Don't drink floodwater or use it for washing without purification",
+      "Don't camp or park near streams or rivers during heavy rainfall"
+    ]
+  },
+  "fire": {
+    "dos": [
+      "Alert others immediately by shouting 'Fire!' and activating fire alarms",
+      "Call emergency services (911) as soon as possible",
+      "Evacuate immediately - leave belongings behind",
+      "Feel doors before opening - if hot, use another escape route",
+      "Crawl low under smoke to breathe cleaner air",
+      "Close doors behind you to slow fire spread",
+      "Use stairs, never elevators during a fire",
+      "Go to your designated meeting point once outside",
+      "If clothes catch fire: Stop, Drop, and Roll",
+      "Use a fire extinguisher only if you're trained and the fire is small"
+    ],
+    "donts": [
+      "Don't go back inside for any reason once you've evacuated",
+      "Don't try to fight a large fire yourself",
+      "Don't open doors without checking if they're hot first",
+      "Don't use elevators during a fire",
+      "Don't hide - evacuate immediately",
+      "Don't breathe smoke - cover nose and mouth with cloth if possible",
+      "Don't run if clothing catches fire - Stop, Drop, and Roll",
+      "Don't waste time gathering belongings",
+      "Don't break windows unless absolutely necessary for escape",
+      "Don't use water on electrical or grease fires"
+    ]
+  },
+  "hurricane": {
+    "dos": [
+      "Evacuate if ordered by authorities",
+      "Board up windows or close storm shutters",
+      "Bring outdoor furniture and decorations inside",
+      "Stock up on emergency supplies: water, food, batteries, medications",
+      "Fill your vehicle's gas tank",
+      "Charge all electronic devices",
+      "Know your evacuation route and have a plan",
+      "Stay indoors during the hurricane in a secure room away from windows",
+      "Monitor weather updates continuously",
+      "Have cash on hand - ATMs may not work after the storm"
+    ],
+    "donts": [
+      "Don't ignore evacuation orders",
+      "Don't use candles during the storm - use flashlights instead",
+      "Don't go outside during the 'eye' of the hurricane - winds will resume",
+      "Don't use generators indoors - they produce deadly carbon monoxide",
+      "Don't tape windows in an 'X' pattern - this doesn't prevent breakage",
+      "Don't wait until the last minute to prepare",
+      "Don't drive through standing or moving water",
+      "Don't touch downed power lines",
+      "Don't use the phone except for emergencies",
+      "Don't open refrigerator or freezer unnecessarily during power outage"
+    ]
+  },
+  "tornado": {
+    "dos": [
+      "Seek shelter immediately in a basement or interior room on the lowest floor",
+      "Get under sturdy furniture and protect your head and neck with your arms",
+      "Stay away from windows, doors, and outside walls",
+      "In a vehicle or mobile home, get out and seek shelter in a building or lie flat in a ditch",
+      "Listen to NOAA Weather Radio or local news for updates",
+      "Have a tornado emergency kit ready",
+      "Wear sturdy shoes and protective clothing",
+      "Keep a battery-powered radio and flashlight handy",
+      "Practice tornado drills with your family",
+      "Know the signs: dark greenish sky, large hail, loud roar"
+    ],
+    "donts": [
+      "Don't stay in a mobile home during a tornado",
+      "Don't try to outrun a tornado in your vehicle in urban areas",
+      "Don't take shelter under highway overpasses",
+      "Don't open windows - this wastes valuable time",
+      "Don't stay in large open rooms like gyms or auditoriums",
+      "Don't ignore tornado warnings",
+      "Don't go outside to watch or photograph the tornado",
+      "Don't use elevators during a tornado warning",
+      "Don't wait to see the tornado before taking shelter",
+      "Don't leave your shelter until the danger has passed and authorities give all-clear"
+    ]
+  },
+  "general_disaster": {
+    "dos": [
+      "Stay calm and assess the situation",
+      "Follow instructions from emergency personnel",
+      "Keep emergency contact numbers accessible",
+      "Have a family emergency plan and practice it",
+      "Maintain a disaster supply kit with 3-day supplies",
+      "Know the emergency procedures for your workplace and children's schools",
+      "Keep important documents in a waterproof, fireproof container",
+      "Have adequate insurance coverage",
+      "Learn basic first aid and CPR",
+      "Stay informed through official emergency channels"
+    ],
+    "donts": [
+      "Don't panic - fear clouds judgment",
+      "Don't spread unverified information or rumors",
+      "Don't ignore warning signs or alerts",
+      "Don't assume someone else will help - take responsibility",
+      "Don't venture into dangerous areas out of curiosity",
+      "Don't use resources wastefully - they may be scarce",
+      "Don't separate from your family without a communication plan",
+      "Don't post your exact location on social media during active disasters",
+      "Don't ignore the needs of vulnerable people (elderly, children, disabled)",
+      "Don't give up - remain hopeful and resilient"
+    ]
+  }
+}
